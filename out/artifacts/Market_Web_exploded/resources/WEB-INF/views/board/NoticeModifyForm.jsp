@@ -29,7 +29,7 @@
     <!-- section -->
     <section class="writing">
         <h2>공지사항</h2>
-        <form action="${contextPath }/board/NoticeModify.jsp" method="post">
+        <form action="${contextPath }/board/NoticeModify" method="post">
             <fieldset>
                 <input type="hidden" name="product_type" value="C">
                 <input type="hidden" name="product_no" value="${data.product_no }">

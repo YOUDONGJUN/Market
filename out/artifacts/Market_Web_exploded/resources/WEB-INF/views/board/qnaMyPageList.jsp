@@ -28,7 +28,7 @@
         <div class="myPage">
             <div class="tab">
                 <ul>
-                    <li><a href="myPageList.jsp?id=${loginUser }">판매 게시판</a></li>
+                    <li><a href="myPageList?id=${loginUser }">판매 게시판</a></li>
                     <li class="clicked"><a href="../board/qnaMyPageList.jsp?id=${loginUser }">문의 게시판</a></li>
                 </ul>
             </div>

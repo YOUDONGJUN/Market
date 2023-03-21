@@ -25,7 +25,7 @@
     <nav>
         <div class="container">
             <ul class="gnb-lnb">
-                <li class="left-nav home"><a href="../index.jsp"><span>중고</span>마켓</a></li>
+                <li class="left-nav home"><a href="../index.jsp"><span>동준</span>마켓</a></li>
                 <li class="right-nav join"><a href="register.jsp">회원가입</a></li>
                 <li class="right-nav"><a href="login.jsp">로그인</a></li>
                 <li class="right-nav"><a href="https://thecheat.co.kr/rb/?mod=_search">더치트 바로가기</a></li>
@@ -45,8 +45,7 @@
                 <label for="id">아이디</label><input type="text" name="id" id="id" placeholder="아이디를 입력해주세요"
                                                   value="${user.id }" required>
                 <!--  회원가입 버튼에 아이디 중복체크기능있어서 제외 -->
-                <button style="margin-left: 20px; class=" btn
-                " type="button" id="idChk" value="N">중복확인</button>
+                <button style="margin-left: 20px;" class="btn" type="button" id="idChk" value="N">중복확인</button>
                 <!--  <a style="margin-left: 20px;" href="#" class="btn">중복 확인</a><br> -->
 
                 <label for="pw">비밀번호</label><input type="password" name="pw" class="pw" placeholder="비밀번호를 입력해주세요"
@@ -59,7 +58,7 @@
                 <label for="nickname">닉네임</label><input type="text" name="nickname" id="nickname"
                                                         placeholder="닉네임을 입력해주세요" value="${user.nickname }"
                                                         required><br>
-                <div id="nicknamecheck" style="display:none"></div>
+                <div id="nicknameCheck" style="display:none"></div>
                 <label for="email">이메일</label><input type="email" name="email" id="email" placeholder="이메일을 입력해주세요"
                                                      value="${user.email }" required><br>
                 <input type="hidden" name="type" value="B">
@@ -109,18 +108,18 @@
     // 이메일 검사 정규식 대소문자+숫자(특수문자 가능)@ 대소문자+숫자(특수문자 가능).2~3자리
     var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-    var idcheckk = false;
-    var confirmpw = false;
-    var confirmname = false;
-    var confirmnickname = false;
-    var confirmemail = false;
+    var idCheck = false;
+    var confirmPw = false;
+    var confirmName = false;
+    var confirmNickname = false;
+    var confirmEmail = false;
 
     $("#idChk").click(function () {
         var id = $("#id").val();
-        idcheck(id);
-        if (idcheckk == false) {
+        idCheck(id);
+        if (idCheck == false) {
             alert("소문자 숫자 포함 4~12자리로 입력해주세요");
-        } else if (idcheckk == true) {
+        } else if (idCheck == true) {
             var frm = $("#register")[0];
             var param = $(frm).serialize();
             $.ajax({
@@ -130,12 +129,12 @@
                 success: function (result) {
                     if (result == 1) {
                         alert("중복된 아이디 입니다");
-                        idcheckk = false;
-                        return idcheckk;
+                        idCheck = false;
+                        return idCheck;
                     } else {
                         alert("사용 가능한 아이디 입니다");
-                        idcheckk = true;
-                        return idcheckk;
+                        idCheck = true;
+                        return idCheck;
                     }
                 }
             });
@@ -151,57 +150,57 @@
         var frm = $("#register")[0];
         var param = $(frm).serialize();
 
-        namecheck();
-        passwordcheck();
-        emailcheck();
-        nicknamecheck();
-        if (idcheckk == false) {
+        nameCheck();
+        passwordCheck();
+        emailCheck();
+        nicknameCheck();
+        if (idCheck == false) {
             alert("아이디 중복 체크를 해주세요");
-        } else if (confirmname == false) {
+        } else if (confirmName == false) {
             alert("이름은 한글2~6자리로 입력해주세요");
-        } else if (!confirmpw) {
+        } else if (!confirmPw) {
             alert("비밀번호는 대소문자 숫자 포함 4~12자리로 입력해주세요");
         } else if (pw != pw2 || pw == null || pw == "") {
             alert("비밀번호가 다릅니다");
         } else if (nickname == "" || nickname == null) {
             alert("닉네임을 입력해주세요");
-        } else if (!confirmemail) {
+        } else if (!confirmEmail) {
             alert("이메일 형식에 맞게 입력해주세요");
         } else {
             $("#register").submit();
         }
     });
 
-    function idcheck() {
+    function idCheck() {
         var id = $("#id").val();
-        idcheckk = idJ.test(id);
-        return idcheckk;
+        idCheck = idJ.test(id);
+        return idCheck;
     }
 
-    function passwordcheck() {
+    function passwordCheck() {
         var pw = $("#pw").val();
-        confirmpw = pwJ.test(pw);
-        return confirmpw;
+        confirmPw = pwJ.test(pw);
+        return confirmPw;
     }
 
-    function namecheck() {
+    function nameCheck() {
         var name = $("#name").val();
-        confirmname = nameJ.test(name);
-        console.log("namecheck" + confirmname);
-        return confirmname;
+        confirmName = nameJ.test(name);
+        console.log("nameCheck" + confirmName);
+        return confirmName;
     }
 
-    function nicknamecheck() {
+    function nicknameCheck() {
         var nickname = $("#nickname").val();
-        confirmnickname = nicknameJ.test(nickname);
-        console.log("nicknamecheck" + confirmnickname);
-        return confirmnickname;
+        confirmNickname = nicknameJ.test(nickname);
+        console.log("nicknameCheck" + confirmNickname);
+        return confirmNickname;
     }
 
-    function emailcheck() {
+    function emailCheck() {
         var email = $("#email").val();
-        confirmemail = mailJ.test(email);
-        return confirmemail;
+        confirmEmail = mailJ.test(email);
+        return confirmEmail;
     }
 
 

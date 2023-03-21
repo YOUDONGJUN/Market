@@ -10,8 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 문의 게시판</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/sub-style.css">
+    <link rel="stylesheet" href="../front/css/reset.css">
+    <link rel="stylesheet" href="../front/css/sub-style.css">
 </head>
 <body>
 <div class="container">
@@ -44,7 +44,7 @@
                            onclick="location.href='${contextPath}/board/qnaModifyForm.jsp?product_no=${data.product_no }'">
                     <input class="btn" type="button"
                            value="삭제"
-                           onclick="location.href='${contextPath}/board/qnadelete?product_no=${data.product_no }&product_img=${data.product_img }'">
+                           onclick="location.href='${contextPath}/board/qnaDelete?product_no=${data.product_no }&product_img=${data.product_img }'">
                     <input class="btn" type="button" value="글목록" onclick="location.href='${contextPath}/board/qna.jsp'">
                 </div>
             </c:when>
@@ -58,7 +58,7 @@
                                onclick="location.href='${contextPath}/board/qnaModifyForm.jsp?product_no=${data.product_no }'">
                         <input class="btn" type="button"
                                value="삭제"
-                               onclick="location.href='${contextPath}/board/qnadelete?product_no=${data.product_no }&product_img=${data.product_img }'">
+                               onclick="location.href='${contextPath}/board/qnaDelete?product_no=${data.product_no }&product_img=${data.product_img }'">
                         <input class="btn" type="button" value="글목록" onclick="location.href='${contextPath}/board/qna'">
                     </div>
                 </c:if>

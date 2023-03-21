@@ -13,7 +13,6 @@
 <%--                                                                               class="ico-github"></a>--%>
         <div class="text">
             <p>WELCOME TO 동준 MARKET</p>
-            <%--                <p>Copyright 2022. All Rights Reserved.</p>--%>
         </div>
     </div>
 </footer>

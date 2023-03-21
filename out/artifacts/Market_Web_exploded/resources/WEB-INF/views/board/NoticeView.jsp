@@ -18,7 +18,7 @@
     <c:import url="../default/nav.jsp"/>
     <!-- header -->
     <header class="sub">
-        <h1>안쓰는 물건 사고팔땐, <span>중고</span>마켓</h1>
+        <h1>지상 최대 쇼핑몰 <span>동준</span>마켓</h1>
     </header>
 
     <!-- section -->
@@ -36,7 +36,7 @@
                     <input class="btn" type="button" value="수정"
                            onclick="location.href='${contextPath}/board/NoticeModifyForm.jsp?product_no=${data.product_no }'">
                     <input class="btn" type="button" value="삭제"
-                           onclick="location.href='${contextPath}/board/Noticedelete?product_no=${data.product_no }'">
+                           onclick="location.href='${contextPath}/board/NoticeDelete?product_no=${data.product_no }'">
                     <input class="btn" type="button" value="목록"
                            onclick="location.href='${contextPath}/board/Notice.jsp'">
                 </div>

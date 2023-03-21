@@ -7,7 +7,7 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <typeAlias type="com.bit.spring.model.UserDTO" alias="userDTO"/>
+        <typeAlias type="com.bit.user.model.UserDTO" alias="userDTO"/>
     </typeAliases>
     <mappers>
         <mapper resource="resources/mapper/user/UserMapper.xml"/>

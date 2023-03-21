@@ -44,7 +44,7 @@
     <!-- section -->
     <section class="writing">
         <h2>문의 게시글 등록하기</h2>
-        <form action="${contextPath }/board/qnawriteSave" enctype="multipart/form-data" method="post">
+        <form action="${contextPath }/board/qnaWriteSave" enctype="multipart/form-data" method="post">
             <fieldset>
                 <input type="hidden" name="product_type" value="B">
                 <input type="hidden" name="product_writer" value="${loginUser }">

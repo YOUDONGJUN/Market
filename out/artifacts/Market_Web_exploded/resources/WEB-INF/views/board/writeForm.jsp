@@ -38,7 +38,7 @@
     <c:import url="../default/nav.jsp"/>
     <!-- header -->
     <header class="sub">
-        <h1>지상 최대 쇼핑몰<br><span>중고</span>마켓</h1>
+        <h1>지상 최대 쇼핑몰<br><span>동준</span>마켓</h1>
     </header>
 
     <!-- section -->
@@ -46,7 +46,7 @@
         <h2>게시글 등록하기</h2>
         <form action="${contextPath }/board/writeSave" enctype="multipart/form-data" method="post">
             <fieldset>
-                <input type="hidden" name="product_type" value="A">
+                <%--@declare id="product_price"--%><input type="hidden" name="product_type" value="A">
                 <input type="hidden" name="product_writer" value="${loginUser }">
                 <p class="wr-title">제목<input type="text" name="product_title" placeholder="제목을 입력해주세요" required></p>
                 <h4>- 금액을 입력해주세요</h4>

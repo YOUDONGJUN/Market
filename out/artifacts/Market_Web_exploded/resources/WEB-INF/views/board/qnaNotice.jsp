@@ -33,7 +33,7 @@
                    onclick="location.href='${contextPath}/board/qnaModifyForm.jsp?product_no=${data.product_no }'">
             <input type="button"
                    value="삭제"
-                   onclick="location.href='${contextPath}/board/qnadelete?product_no=${data.product_no }&product_img=${data.product_img }'">
+                   onclick="location.href='${contextPath}/board/qnaDelete?product_no=${data.product_no }&product_img=${data.product_img }'">
         </c:if>
         <c:if test="${data.product_writer==loginUser }">
             <form method="post" action="/reply/write">
