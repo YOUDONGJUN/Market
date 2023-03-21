@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.root.mybatis.board.ReplyMapper">
+
+	<!-- 댓글 조회 -->
+	<select id="readReply" resultType="com.web.root.board.dto.QnaReplyDTO">
+    	SELECT RNO, CONTENT, WRITER, REGDATE 
+    	FROM REPLY
+    	WHERE BNO = #{bno}
+	</select>
+
+	<insert id="reply">
+    	insert into reply(bno, rno, writer, content, regdate)
+    	values(#{bno}, reply_seq.nextval, #{writer}, #{content}, sysdate)
+	</insert>
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- BoardMapper.xml -->
+<mapper namespace="com.web.root.mybatis.board.BoardMapper">
+
+	<resultMap type="com.web.root.board.dto.BoardDTO" id="board">
+		<result property="product_no" column="product_no"/>
+		<result property="product_title" column="product_title"/>
+		<result property="product_day" column="product_day"/>
+		<result property="product_main" column="product_main"/>
+		<result property="product_img" column="product_img"/>
+		<result property="product_writer" column="product_writer"/>
+		<result property="product_type" column="product_type"/>
+		<result property="product_price" column="product_price"/>
+		<result property="product_trade" column="product_trade"/>
+		<result property="product_status" column="product_status"/>
+		<result property="product_status1" column="product_status1"/>
+	</resultMap>
+	
+	<select id="boardAllList" resultMap="board">
+	select B.* from   
+      (select rownum rn, A.* from 
+      (select * from board_product where product_type='A' order by product_no desc) A) B 
+      where rn between #{s} and #{e}
+	</select>
+	
+	<select id="NoticeList" resultMap="board">
+	select B.* from   
+      (select rownum rn, A.* from 
+      (select * from board_product where product_type='C' order by product_no desc) A) B 
+      where rn between #{s} and #{e}
+	</select>
+
+	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
+	<select id="BlistAll" resultType="com.web.root.board.dto.BoardDTO">
+	    SELECT * 
+	    FROM board_product
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="Bsearch"></include>
+	    ORDER BY product_no desc
+	</select>
+	 
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="BcountArticle" resultType="int">
+	    SELECT COUNT(*) FROM board_product
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="Bsearch"></include>
+	</select>
+	 
+	<!-- sql code 조각 -->
+	<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+	<sql id="Bsearch">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="searchOption == 'all'">
+	            WHERE product_writer like '%'||#{keyword}||'%'
+	            OR product_main like '%'||#{keyword}||'%'
+	            OR product_title like '%'||#{keyword}||'%'
+	            and product_type='A'
+	        </when>
+	        <!-- 전체 검색이 아닐 경우 -->
+	        <otherwise>
+	            WHERE ${searchOption} like '%'||#{keyword}||'%'
+	            and product_type='A'
+	        </otherwise>
+	    </choose>
+	</sql>
+	
+	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
+	<select id="QlistAll" resultType="com.web.root.board.dto.BoardDTO">
+	    SELECT * 
+	    FROM board_product
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="Qsearch"></include>
+	    ORDER BY product_no desc
+	</select>
+	 
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="QcountArticle" resultType="int">
+	    SELECT COUNT(*) FROM board_product
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="Qsearch"></include>
+	</select>
+	 
+	<!-- sql code 조각 -->
+	<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+	<sql id="Qsearch">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="searchOption == 'all'">
+	            WHERE product_writer like '%'||#{keyword}||'%'
+	            OR product_main like '%'||#{keyword}||'%'
+	            OR product_title like '%'||#{keyword}||'%'
+	            and product_type='B'
+	        </when>
+	        <!-- 전체 검색이 아닐 경우 -->
+	        <otherwise>
+	            WHERE ${searchOption} like '%'||#{keyword}||'%'
+	            and product_type='B'
+	        </otherwise>
+	    </choose>
+	</sql>
+	
+	<select id="qna" resultMap="board">
+		select B.* from   
+      (select rownum rn, A.* from 
+      (select * from board_product where product_type='B' order by product_no desc) A) B 
+      where rn between #{s} and #{e}
+	</select> 	
+	
+	<select id="mypageList" resultMap="board">
+       select B.* from   
+      (select rownum rn, A.* from 
+      (select * from board_product where product_writer=(select id from membership1 where id=#{id}) 
+      and product_type='A' order by product_no desc) A) B 
+      where rn between #{s} and #{e}
+	</select> 
+	
+	<select id="qnamypageList" resultMap="board">
+       select B.* from   
+      (select rownum rn, A.* from 
+      (select * from board_product where product_writer=(select id from membership1 where id=#{id}) 
+      and product_type='B' order by product_no desc) A) B 
+      where rn between #{s} and #{e}
+    
+	</select> 
+	
+	<insert id="writeSave">
+    	insert into board_product(product_no, product_writer, product_title, product_main, product_img ,product_type,product_price,product_trade,product_status,product_status1)
+    	values(board_product_seq.nextval, #{product_writer}, #{product_title}, #{product_main}, #{product_img},#{product_type},#{product_price},#{product_trade},#{product_status},#{product_status1})
+	</insert>
+	
+	<insert id="NoticeWriteSave">
+    	insert into board_product(product_no, product_title, product_writer, product_main, product_type)
+    	values(board_product_seq.nextval, #{product_title}, #{product_writer}, #{product_main}, #{product_type})
+	</insert>
+	
+	<insert id="qnawriteSave">
+    	insert into board_product(product_no, product_writer, product_title, product_main, product_img ,product_type)
+    	values(board_product_seq.nextval, #{product_writer}, #{product_title}, #{product_main}, #{product_img},#{product_type})
+	</insert>
+	
+	<select id="contentView" resultMap="board">
+		select * from board_product where product_no=#{product_no}
+	</select>
+	
+	<select id="NoticeView" resultMap="board">
+		select * from board_product where product_no=#{product_no}
+	</select>
+	
+	<select id="qnacontentView" resultMap="board">
+		select * from board_product where product_no=#{product_no}	
+	</select>
+	
+	<update id="modify">
+		update board_product set product_title=#{product_title},
+						         product_main=#{product_main},						         
+						         product_img=#{product_img},						         
+						         product_price=#{product_price},
+						         product_trade=#{product_trade},
+						         product_status=#{product_status},
+						         product_status1=#{product_status1} where product_no=#{product_no}
+	</update>
+	
+	<update id="NoticeModify">
+		update board_product set product_title=#{product_title},
+						         product_main=#{product_main} where product_no=#{product_no}
+	</update>
+	
+	<update id="qnamodify">
+		update board_product set product_title=#{product_title},
+						         product_main=#{product_main},						         
+						         product_img=#{product_img}	where product_no=#{product_no}
+	</update>
+	
+	<delete id="delete">
+		delete from board_product where product_no=#{product_no}
+	</delete>
+	
+	<delete id="qnadelete">
+		delete from board_product where product_no=#{product_no}
+	</delete>
+	
+	<select id="selectBoardCount" resultType="Integer">
+		select count(*) from board_product where product_type='A'
+	</select>
+	
+	<select id="qnaselectBoardCount" resultType="Integer">
+		select count(*) from board_product where product_type='B'
+	</select>
+	
+	<select id="myselectBoardCount" resultType="Integer">
+		select count(*) from board_product where product_writer=(select id from membership1 where id=#{id}) and product_type='A'
+	</select>
+	
+	<select id="qnamyselectBoardCount" resultType="Integer">
+		select count(*) from board_product where product_writer=(select id from membership1 where id=#{id}) and product_type='B'
+	</select>
+	
+</mapper>
