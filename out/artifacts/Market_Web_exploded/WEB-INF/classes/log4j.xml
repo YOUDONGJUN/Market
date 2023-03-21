@@ -1,9 +1,9 @@
-<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
-    <Appenders>
+<!--<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">-->
+<!--    <Appenders>-->
 
-    </Appenders>
-    <Loggers></Loggers>
-</Configuration>
+<!--    </Appenders>-->
+<!--    <Loggers></Loggers>-->
+<!--</Configuration>-->
 
 
         <!--        &lt;!&ndash; Appenders &ndash;&gt;-->

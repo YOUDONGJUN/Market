@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.web.root.mybatis.board.ReplyMapper">
+<mapper namespace="com.bit.mybatis.board.ReplyMapper">
 
 	<!-- 댓글 조회 -->
-	<select id="readReply" resultType="com.web.root.board.dto.QnaReplyDTO">
+	<select id="readReply" resultType="com.bit.board.dto.QnaReplyDTO">
     	SELECT RNO, CONTENT, WRITER, REGDATE 
     	FROM REPLY
     	WHERE BNO = #{bno}

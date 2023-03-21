@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public int user_check(String id){
+	public int userCheck(String id){
 		String userCheck = userMapper.userCheck(id);
 		//int userCheck =Integer.parseInt(mapper.user_check(id));
 		int result = Integer.parseInt(userCheck);
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 			url="/user/myPage?id="+user.getId();
 		} else {
 			msg="수정 오류";
-			url="/user/userinfo?id="+user.getId();
+			url="/user/userInfo?id="+user.getId();
 		}
 		String message=null;
 		String path=request.getContextPath();
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 			url="/user/userList";
 		} else {
 			msg="수정 오류";
-			url="/user/userinfo_a?id="+user.getId();
+			url="/user/userInfo_a?id="+user.getId();
 		}
 		String message=null;
 		String path=request.getContextPath();

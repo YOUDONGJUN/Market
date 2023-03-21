@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml -->
+<mapper namespace="com.bit.mybatis.user.UserMapper">
+
+    <resultMap type="com.bit.user.dto.userDTO" id="user">
+        <id property="id" column="id"/>
+        <result property="pw" column="pw"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="nickname" column="nickname"/>
+        <result property="type" column="type"/>
+        <result property="role" column="role"/>
+    </resultMap>
+
+    <select id="idCheck" parameterType="String" resultType="String">
+        select count(*)
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="myPage" resultMap="user">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="info" resultMap="user">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <update id="infoUpdate">
+        update user
+        set name=#{name},
+            id=#{id},
+            pw=#{pw},
+            nickname=#{nickname},
+            email=#{email}
+        where id = #{id}
+    </update>
+
+
+    <insert id="register">
+        insert into user
+        values (#{id}, #{pw}, #{name}, #{email}, #{nickname}, #{type})
+    </insert>
+
+    <select id="loginTest" resultType="Integer">
+        select count(*)
+        from user
+        where id = #{id}
+          and pw = #{pw}
+    </select>
+
+    <delete id="userDelete">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <select id="userList" resultType="com.bit.user.dto.userDTO">
+        select *
+        from user
+        where type = 'B'
+    </select>
+
+</mapper>

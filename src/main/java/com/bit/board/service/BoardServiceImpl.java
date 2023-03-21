@@ -139,15 +139,6 @@ public class BoardServiceImpl implements BoardService {
         dto.setProduct_status(mul.getParameter("product_status"));
         MultipartFile file = mul.getFile("product_img");
 
-//      데이터 가져오는지 테스트
-//      String writer=mul.getParameter("product_writer");
-//      String title=mul.getParameter("product_title");
-//      String main=mul.getParameter("product_main");
-//      String fileName=file.getOriginalFilename();
-//      System.out.println(writer);
-//      System.out.println(title);
-//      System.out.println(main);
-//      System.out.println(fileName);
 
         if (file.getSize() != 0) {   // 이미지 파일이 있을때
             System.out.println(boardFileService.saveFile(file));
@@ -226,7 +217,7 @@ public class BoardServiceImpl implements BoardService {
             url = "/board/qna";
         } else {
             msg = "문제가 발생했습니다";
-            url = "/board/qnawriteForm";
+            url = "/board/qnaWriteForm";
         }
 
         return boardFileService.getMessage(request, msg, url);
@@ -254,7 +245,6 @@ public class BoardServiceImpl implements BoardService {
         dto.setProduct_no(Integer.parseInt(mul.getParameter("product_no")));
         dto.setProduct_title(mul.getParameter("product_title"));
         dto.setProduct_main(mul.getParameter("product_main"));
-//      dto.setproduct_type(mul.getParameter("product_type"));
         dto.setProduct_price(Integer.parseInt(mul.getParameter("product_price")));
         dto.setProduct_trade(mul.getParameter("product_trade"));
         dto.setProduct_status(mul.getParameter("product_status"));
@@ -340,7 +330,7 @@ public class BoardServiceImpl implements BoardService {
             url = "/board/qna";
         } else {
             msg = "수정 오류";
-            url = "/board/qnamodifyForm?product_no=" + dto.getProduct_no();
+            url = "/board/qnaModifyForm?product_no=" + dto.getProduct_no();
         }
         return boardFileService.getMessage(request, msg, url);
     }
@@ -392,7 +382,7 @@ public class BoardServiceImpl implements BoardService {
             boardFileService.deleteImage(product_img);
         } else {
             msg = "삭제 오류";
-            url = "/board/qnacontentView?product_img=" + product_no;
+            url = "/board/qnaContentView?product_img=" + product_no;
         }
         return boardFileService.getMessage(request, msg, url);
     }
@@ -437,10 +427,10 @@ public class BoardServiceImpl implements BoardService {
         String msg, url;
         if (result == 1) {
             msg = "글이 등록되었습니다";
-            url = "/board/qnacontentView?product_no=" + request.getParameter("product_no");
+            url = "/board/qnaContentView?product_no=" + request.getParameter("product_no");
         } else {
             msg = "문제가 발생했습니다";
-            url = "/board/qnacontentView?product_no=" + request.getParameter("product_no");
+            url = "/board/qnaContentView?product_no=" + request.getParameter("product_no");
         }
 
         return boardFileService.getMessage(request, msg, url);

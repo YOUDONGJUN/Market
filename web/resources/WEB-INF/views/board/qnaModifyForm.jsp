@@ -38,13 +38,13 @@
     <c:import url="../default/nav.jsp"/>
     <!-- header -->
     <header class="sub">
-        <h1>지상 최대 쇼핑몰<br><span>중고</span>마켓</h1>
+        <h1>지상 최대 쇼핑몰<br><span>동준</span>마켓</h1>
     </header>
 
     <!-- section -->
     <section class="writing">
         <h2>문의 게시글수정</h2>
-        <form action="${contextPath }/board/qnamodify" enctype="multipart/form-data" method="post">
+        <form action="${contextPath }/board/qnaModify" enctype="multipart/form-data" method="post">
             <fieldset>
                 <input type="hidden" name="product_type" value="B">
                 <input type="hidden" name="product_writer" value="${loginUser }">

@@ -53,7 +53,7 @@
                 <p class="wr-title">제목<input type="text" name="product_title" value="${data.product_title }" required>
                 </p>
                 <fieldset>
-                    <h4>- 금액을 입력해주세요</h4>
+                    <%--@declare id="product_price"--%><h4>- 금액을 입력해주세요</h4>
                     <label for="product_price" style="width:30px;">금액</label><input type="number" name="product_price"
                                                                                     placeholder="금액을 입력해주세요"
                                                                                     value="${product_price }" required>

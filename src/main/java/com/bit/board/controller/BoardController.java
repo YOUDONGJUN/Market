@@ -5,7 +5,6 @@ import com.bit.board.dto.QnaReplyDTO;
 import com.bit.board.service.BoardFileService;
 import com.bit.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -122,9 +121,9 @@ public class BoardController {
         return "board/NoticeWriteForm";
     }
 
-    @GetMapping("qnawriteForm")
-    public String qnawriteForm() {
-        return "board/qnawriteForm";
+    @GetMapping("qnaWriteForm")
+    public String qnaWriteForm() {
+        return "board/qnaWriteForm";
     }
 
     @PostMapping("writeSave")
@@ -146,8 +145,8 @@ public class BoardController {
         out.print(message);
     }
 
-    @PostMapping("qnawriteSave")
-    public void qnawriteSave(MultipartHttpServletRequest mul,
+    @PostMapping("qnaWriteSave")
+    public void qnaWriteSave(MultipartHttpServletRequest mul,
                              HttpServletResponse response,
                              HttpServletRequest request) throws IOException {
         String message = boardService.qnaWriteSave(mul, request);
@@ -234,7 +233,7 @@ public class BoardController {
     }
 
     @PostMapping("qnaModify")
-    public void qnamodify(MultipartHttpServletRequest mul,
+    public void qnaModify(MultipartHttpServletRequest mul,
                           HttpServletRequest request,
                           HttpServletResponse response) throws Exception {
         String message = boardService.qnaModify(mul, request);
@@ -255,8 +254,8 @@ public class BoardController {
 
     }
 
-    @GetMapping("Noticedelete")
-    public void Noticedelete(@RequestParam int product_no,
+    @GetMapping("NoticeDelete")
+    public void NoticeDelete(@RequestParam int product_no,
                              HttpServletRequest request,
                              HttpServletResponse response) throws Exception {
         String message = boardService.NoticeDelete(product_no, request);
@@ -266,8 +265,8 @@ public class BoardController {
 
     }
 
-    @GetMapping("qnadelete")
-    public void qnadelete(@RequestParam int product_no,
+    @GetMapping("qnaDelete")
+    public void qnaDelete(@RequestParam int product_no,
                           @RequestParam String product_img,
                           HttpServletRequest request,
                           HttpServletResponse response) throws Exception {

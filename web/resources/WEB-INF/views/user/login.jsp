@@ -23,7 +23,7 @@
     <nav>
         <div class="container">
             <ul class="gnb-lnb">
-                <li class="left-nav home"><a href="../index.jsp"><span>중고</span>마켓</a></li>
+                <li class="left-nav home"><a href="../index.jsp"><span>동준</span>마켓</a></li>
                 <li class="right-nav join"><a href="register.jsp">회원가입</a></li>
                 <li class="right-nav"><a href="login.jsp">로그인</a></li>
                 <li class="right-nav"><a href="https://thecheat.co.kr/rb/?mod=_search">더치트 바로가기</a></li>
@@ -54,8 +54,8 @@
 <!-- footer -->
 <footer>
     <div class="container">
-        <a href="https://github.com/KoreaAcademeTeamFive" target="_blank"><img src="../front/img/icon-github.png" alt=""
-                                                                               class="ico-github"></a>
+<%--        <a href="https://github.com/KoreaAcademeTeamFive" target="_blank"><img src="../front/img/icon-github.png" alt=""--%>
+<%--                                                                               class="ico-github"></a>--%>
         <div class="text">
             <p>WELCOME TO 동준 MARKET</p>
             <%--                <p>Copyright 2022. All Rights Reserved.</p>--%>

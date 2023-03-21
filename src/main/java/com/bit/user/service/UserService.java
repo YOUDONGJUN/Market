@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserService {
 
-    public int user_check(String id);
+    public int userCheck(String id);
 
     public void myPage(Model model, String userid);
 
