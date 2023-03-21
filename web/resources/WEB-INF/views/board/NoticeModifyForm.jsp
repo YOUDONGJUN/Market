@@ -39,7 +39,7 @@
                 <textarea name="product_main" id="wr-con" cols="130" rows="20" placeholder="본문 내용을 입력해주세요."
                           required><c:out value="${data.product_main }"/></textarea>
                 <div class="btn-wrapper">
-                    <div class="btn btn-submit"><a href="../board/NoticeView.jsp?product_no=${data.product_no}">&lt;
+                    <div class="btn btn-submit"><a href="NoticeView.jsp?product_no=${data.product_no}">&lt;
                         취소</a></div>
                     <input class="btn" type="submit" value="수정">
                 </div>

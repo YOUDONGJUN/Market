@@ -106,7 +106,7 @@
             </tr>
         </table>
         <div class="btn-wrapper">
-            <a href="../board/qnaWriteForm.jsp" class="btn">글쓰기</a>
+            <a href="qnaWriteForm.jsp" class="btn">글쓰기</a>
         </div>
     </section>
 </div>

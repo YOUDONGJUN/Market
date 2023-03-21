@@ -37,7 +37,7 @@
                 <textarea name="product_main" id="wr-con" cols="130" rows="20" placeholder="본문 내용을 입력해주세요."
                           required></textarea>
                 <div class="btn-wrapper">
-                    <div class="btn btn-submit"><a href="../board/boardAllList.jsp">&lt; back</a></div>
+                    <div class="btn btn-submit"><a href="boardAllList.jsp">&lt; back</a></div>
                     <input class="btn" type="submit" value="수정">
                 </div>
             </fieldset>

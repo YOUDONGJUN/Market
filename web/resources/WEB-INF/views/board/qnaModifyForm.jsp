@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문의 게시글 등록</title>
+    <title>문의 게시글 수정</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function readURL(input) {
@@ -38,26 +38,33 @@
     <c:import url="../default/nav.jsp"/>
     <!-- header -->
     <header class="sub">
-        <h1>지상 최대 쇼핑몰<br><span>동준</span>마켓</h1>
+        <h1>지상 최대 쇼핑몰<br><span>중고</span>마켓</h1>
     </header>
 
     <!-- section -->
     <section class="writing">
-        <h2>문의 게시글 등록하기</h2>
-        <form action="${contextPath }/board/qnawriteSave" enctype="multipart/form-data" method="post">
+        <h2>문의 게시글수정</h2>
+        <form action="${contextPath }/board/qnamodify" enctype="multipart/form-data" method="post">
             <fieldset>
                 <input type="hidden" name="product_type" value="B">
                 <input type="hidden" name="product_writer" value="${loginUser }">
-                <p class="wr-title">제목<input type="text" name="product_title" placeholder="제목을 입력해주세요" required></p>
-                <textarea name="product_main" id="wr-con" cols="130" rows="20" placeholder="본문 내용을 입력해주세요."
-                          required></textarea>
-                <input type="file" class="file" name="product_img" onchange="readURL(this)">
-                <img id="preview" src="#" width="100px" height="100px">
-                <div class="btn-wrapper">
-                    <div class="btn btn-submit"><a href="../board/qna.jsp">&lt; back</a></div>
-                    <input class="btn" type="submit" value="등록">
-                </div>
+                <input type="hidden" name="originFileName" value="${data.product_img }">
+                <input type="hidden" name="product_no" value="${data.product_no }">
+                <p class="wr-title">제목<input type="text" name="product_title" value="${data.product_title }" required>
+                </p>
+                <textarea name="product_main" id="wr-con" cols="130" rows="20" required><c:out
+                        value="${data.product_main }"/></textarea>
+                <input type="file" class="file" name="product_img" onchange="readURL(this)"
+                       value="${data.product_img }">
+                <img id="preview" src="${contextPath }/board/download?file=${data.product_img }" width="100px"
+                     height="100px">
 
+                <div class="btn-wrapper">
+                    <div class="btn btn-submit"><a href="qna.jsp">&lt; 취소</a></div>
+                    <input class="btn" type="submit" value="수정">
+                    <input class="btn" type="button" value="글목록"
+                           onclick="location.href='${contextPath }/board/qna.jsp'">
+                </div>
             </fieldset>
 
         </form>

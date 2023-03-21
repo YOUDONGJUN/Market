@@ -117,7 +117,7 @@
             </tr>
         </table>
         <div class="btn-wrapper">
-            <a href="../board/writeForm.jsp" class="btn btn-submit">글쓰기</a>
+            <a href="writeForm.jsp" class="btn btn-submit">글쓰기</a>
         </div>
     </section>
 </div>

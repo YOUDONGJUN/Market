@@ -28,7 +28,7 @@
         <div class="mypage">
             <div class="tab">
                 <ul>
-                    <li><a href="../board/myPageList.jsp?id=${loginUser }">판매 게시판</a></li>
+                    <li><a href="myPageList.jsp?id=${loginUser }">판매 게시판</a></li>
                     <li class="clicked"><a href="/root/board/qnaMyPageList.jsp?id=${loginUser }">문의 게시판</a></li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@
         </div>
         <div class="btn-wrapper">
             <input class="btn" type="button" value="돌아가기"
-                   onclick="location.href='../member/myPage.jsp?id=${loginUser }';">
+                   onclick="location.href='../member/myPage.jsp';">
         </div>
     </section>
     <!--             <input type="button" value="돌아가기" onClick="history.go(-1)">  -->

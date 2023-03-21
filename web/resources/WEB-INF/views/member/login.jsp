@@ -24,8 +24,8 @@
         <div class="container">
             <ul class="gnb-lnb">
                 <li class="left-nav home"><a href="../index.jsp"><span>중고</span>마켓</a></li>
-                <li class="right-nav join"><a href="../member/register.jsp">회원가입</a></li>
-                <li class="right-nav"><a href="../member/login.jsp">로그인</a></li>
+                <li class="right-nav join"><a href="register.jsp">회원가입</a></li>
+                <li class="right-nav"><a href="login.jsp">로그인</a></li>
                 <li class="right-nav"><a href="https://thecheat.co.kr/rb/?mod=_search">더치트 바로가기</a></li>
             </ul>
         </div>
@@ -42,7 +42,7 @@
 
                 <div style="text-align: center;" class="btn-wrapper">
                     <input class="btn btn-submit" type="submit" value="로그인">
-                    <a href="../member/register.jsp" class="btn btn-submit">회원가입</a>
+                    <a href="register.jsp" class="btn btn-submit">회원가입</a>
                 </div>
             </fieldset>
         </form>

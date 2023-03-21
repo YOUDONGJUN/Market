@@ -59,7 +59,7 @@
         <c:choose>
             <c:when test="${not empty loginAdmin}">
                 <div class="btn-wrapper">
-                    <a href="../board/NoticeWriteForm.jsp" class="btn btn-submit">공지사항 글쓰기</a>
+                    <a href="NoticeWriteForm.jsp" class="btn btn-submit">공지사항 글쓰기</a>
                 </div>
             </c:when>
         </c:choose>

@@ -26,8 +26,8 @@
         <div class="container">
             <ul class="gnb-lnb">
                 <li class="left-nav home"><a href="../index.jsp"><span>중고</span>마켓</a></li>
-                <li class="right-nav join"><a href="../member/register.jsp">회원가입</a></li>
-                <li class="right-nav"><a href="../member/login.jsp">로그인</a></li>
+                <li class="right-nav join"><a href="register.jsp">회원가입</a></li>
+                <li class="right-nav"><a href="login.jsp">로그인</a></li>
                 <li class="right-nav"><a href="https://thecheat.co.kr/rb/?mod=_search">더치트 바로가기</a></li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
         <h2>회원가입</h2>
         <p>동준마켓에 오신걸 환영합니다! 이제 몇가지 정보만 입력하면 완료됩니다.</p>
 
-        <form id=register name="register" action="../member/register.jsp" method="post">
+        <form id=register name="register" action="register.jsp" method="post">
             <fieldset>
                 <label for="name">이름</label><input type="text" name="name" id="name" placeholder="이름을 입력해주세요"
                                                    value="${member.name }" required><br>

@@ -77,7 +77,7 @@
 
 
                 <div class="btn-wrapper">
-                    <a href="../board/boardAllList.jsp">
+                    <a href="boardAllList.jsp">
                         <div class="btn btn-submit">&lt; back</div>
                     </a>
                     <input class="btn" type="submit" value="등록">

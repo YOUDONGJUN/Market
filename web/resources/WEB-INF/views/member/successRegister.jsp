@@ -19,8 +19,8 @@
                 <li class="left-nav home"><a href="../index.jsp"><span>동준</span>마켓</a></li>
                 <!--  <li class="left-nav clicked"><a href="/root/board/boardAllList">팝니다🙌</a></li>-->
                 <!--  <li class="left-nav"><a href="/root/board/qna">문의하기</a></li>-->
-                <li class="right-nav join"><a href="../member/register.jsp">회원가입</a></li>
-                <li class="right-nav"><a href="../member/login.jsp">로그인</a></li>
+                <li class="right-nav join"><a href="register.jsp">회원가입</a></li>
+                <li class="right-nav"><a href="login.jsp">로그인</a></li>
             </ul>
         </div>
     </nav>
@@ -36,7 +36,7 @@
             <a href="../index">
                 <div>홈으로</div>
             </a>
-            <a href="../member/login.jsp">
+            <a href="login.jsp">
                 <div>로그인</div>
             </a>
         </div>
