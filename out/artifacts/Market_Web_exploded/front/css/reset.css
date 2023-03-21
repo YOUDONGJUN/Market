@@ -1,0 +1,267 @@
+@charset "utf-8";
+
+/*
+    제목 폰트 50px
+    소제목 폰트 35px
+    기본 폰트 18px
+*/
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+/* 여백 초기화 */
+body, div, ul, li, dl, dd, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset, legend, p, select, table, th, td, tr, textarea, button, form, figure, figcaption {
+  margin: 0 auto;
+  padding: 0;
+}
+
+p {
+  margin-top: 20px;
+}
+
+/* a 링크 초기화 */
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+.btn-wrapper a {
+	color: #fff;
+}
+
+/* 폰트 초기화 */
+body, input, textarea, select, button, table {
+  font-family: 'NanumBarunGothic', AppleSDGothicNeo-Regular, 'Malgun Gothic', '맑은 고딕', dotum, '돋움', sans-serif;
+  color: #222;
+  font-size: 18px;
+}
+
+/* 폰트 스타일 초기화 */
+em, address {
+  font-style: normal;
+}
+
+/* 블릿기호 초기화 */
+ul, li, ol {
+  list-style: none;
+}
+
+/* 테두리 초기화 */
+img, fieldset {
+  border: 0 none;
+}
+
+/* 버튼 초기화 */
+button {
+  border: 0;
+}
+
+/* 제목 태그 초기화 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-weight: 100;
+}
+
+/* 버튼 클릭 시 아웃라인 X */
+*:focus {
+  outline: none;
+}
+
+/* iframe 초기화 */
+iframe {
+  display: block;
+  width: 100%;
+}
+
+/* 컨텐츠 영역 가로 사이즈 초기화 */
+.container {
+    width: 1200px;
+}
+
+/* height 초기화 */
+nav { height: 70px; line-height: 70px; margin-bottom: 20px;}
+header { height: 450px;}
+header.sub {
+	background: url(../img/img-header.png) 800px 80px no-repeat; background-size: 35%;
+}
+section { margin-top: 150px; }
+article { height: 500px; text-align: center; }
+footer { height: 250px; background-color: rgb(246, 246, 246); margin-top: 200px;}
+
+/* span 초기화 */
+span {
+  color: rgb(52, 152, 219);
+}
+
+/* 버튼 초기화 */
+.btn, button {
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 17px;
+  background-color: rgb(52, 152, 219); color: white;
+  border-radius: 7px;
+  padding: 8px 12px;
+  margin: 30px 10px 0 0;
+  border: 0;
+}
+
+button {
+	margin: 0;
+}
+
+.btn2 {
+	margin: 0;
+}
+
+.btn-wrapper {
+  text-align: right;
+}
+
+.btn-wrapper * {
+  display: inline-block;
+  
+}
+
+/* table 초기화 */
+table {
+  margin-top: 60px;
+  border: 1px solid #c6c6c6;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table th {
+  background-color: rgb(246, 246, 246);
+}
+
+table th, td {
+  padding: 20px;
+}
+
+table th.t-title {
+  width: 600px;
+}
+
+/* form 초기화 */
+form {
+  width: 400px;
+  text-align: left;
+  border: 1px solid rgb(236, 241, 244);
+  border-radius: 20px;
+  padding: 50px;
+  margin-top: 50px;
+  box-shadow: 5px 5px 10px lightgrey;
+}
+
+form p:first-of-type {
+  margin: 0;
+}
+
+form input {
+  border: 1px solid #c6c6c6;
+  margin-left: 20px;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+form input.btn {
+  border: 0;
+}
+
+form .id-check {
+  float: left;
+}
+
+form label {
+  display: inline-block;
+  width: 130px;
+}
+
+/* paging 초기화 */
+.paging {
+  text-align: center;
+  border: 0;
+}
+
+.paging a {
+  background-color:rgb(246, 246, 246);
+  width: 40px; height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  border-radius: 50px;
+  margin-right: 10px;
+  margin-top: 100px;
+}
+
+/* header */
+header h1 {
+  font-size: 45px;
+  padding-top: 250px;
+  font-weight: 100;
+}
+
+/* nav */
+nav {
+  border-bottom: 1px solid #e8e8e8;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1;
+  background: #fff;
+  width: 100%;
+}
+nav ul {
+  width: 100%;
+  display: inline-block;
+}
+
+nav ul .home a {
+  font-weight: bold;
+  padding-left: 0;
+}
+
+ul li.clicked a {   /* 메인 메뉴 클릭했을 때 스타일 */
+  font-weight: bold;
+  color:rgb(52, 152, 219);
+}
+
+nav ul li a {
+  padding: 20px 25px;
+}
+
+nav ul li.left-nav {
+  float: left;
+}
+
+nav ul li.right-nav {
+  float: right;
+}
+
+nav ul .right-nav.first a {
+  padding-right: 0;
+}
+
+.profile-ico a {
+  padding: 0;
+}
+
+nav img {
+  width: 40px;
+  vertical-align: middle;
+}
+
+/* footer */
+footer { text-align: center; }
+
+footer .ico-github {
+    width: 50px;
+    margin-top: 70px;
+}
+
+footer .text {
+    margin-top: 20px;
+}

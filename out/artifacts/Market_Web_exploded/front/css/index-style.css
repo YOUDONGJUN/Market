@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/* header */
+article:first-of-type {
+    background-color: rgb(236, 241, 244);
+}
+
+article img {
+    left: 300px;
+    width: 500px;
+}
+
+article .text {
+    float: right;
+    margin-top: 180px;
+}
+
+article h1 {
+    font-size: 40px;
+}
+
+article:last-of-type {
+    height: 200px;
+    padding: 100px 0;
+    height: auto;
+}
+
+article:last-of-type .btn {
+    margin-top: 30px;
+    width: 100px;
+    padding: 30px;
+    font-size: 23px;
+}
+
+.btn-wrapper {
+    text-align: center;
+}
