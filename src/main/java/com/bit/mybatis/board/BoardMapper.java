@@ -12,9 +12,9 @@ public interface BoardMapper {
 
     public List<BoardDTO> qna(@Param("s") int start, @Param("e") int end);
 
-    public List<BoardDTO> mypageList(@Param("s") int start, @Param("e") int end, @Param("id") String id);
+    public List<BoardDTO> myPageList(@Param("s") int start, @Param("e") int end, @Param("id") String id);
 
-    public List<BoardDTO> qnamypageList(@Param("s") int start, @Param("e") int end, @Param("id") String id);
+    public List<BoardDTO> qnaMyPageList(@Param("s") int start, @Param("e") int end, @Param("id") String id);
 
     public List<BoardDTO> NoticeList(@Param("s") int start, @Param("e") int end);
 
@@ -22,31 +22,31 @@ public interface BoardMapper {
 
     public int NoticeWriteSave(BoardDTO dto);
 
-    public int qnawriteSave(BoardDTO dto);
+    public int qnaWriteSave(BoardDTO dto);
 
     public BoardDTO contentView(int product_no);
 
     public BoardDTO NoticeView(int product_no);
 
-    public BoardDTO qnacontentView(int product_no);
+    public BoardDTO qnaContentView(int product_no);
 
     public int modify(BoardDTO dto);
 
     public int NoticeModify(BoardDTO dto);
 
-    public int qnamodify(BoardDTO dto);
+    public int qnaModify(BoardDTO dto);
 
     public int delete(int product_no);
 
-    public int qnadelete(int product_no);
+    public int qnaDelete(int product_no);
 
     public int selectBoardCount();
 
-    public int qnaselectBoardCount();
+    public int qnaSelectBoardCount();
 
-    public int myselectBoardCount(@Param("id") String id);
+    public int mySelectBoardCount(@Param("id") String id);
 
-    public int qnamyselectBoardCount(@Param("id") String id);
+    public int qnaMySelectBoardCount(@Param("id") String id);
 
     public List<BoardDTO> listAll(String searchOption, String keyword);
 

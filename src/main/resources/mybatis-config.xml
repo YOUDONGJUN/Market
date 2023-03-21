@@ -10,7 +10,7 @@
         <typeAlias type="com.bit.spring.model.UserDTO" alias="userDTO"/>
     </typeAliases>
     <mappers>
-        <mapper resource="config/mybatis/mapper/UserMapper.xml"/>
+        <mapper resource="resources/mapper/user/UserMapper.xml"/>
     </mappers>
 </configuration>
 

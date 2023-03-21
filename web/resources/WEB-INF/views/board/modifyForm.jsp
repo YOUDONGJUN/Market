@@ -81,7 +81,7 @@
                      height="100px">
 
                 <div class="btn-wrapper">
-                    <a href="/root/board/boardAllList">
+                    <a href="../board/boardAllList.jsp">
                         <div class="btn btn-submit">&lt; 취소</div>
                     </a>
                     <input class="btn" type="submit" value="수정하기">

@@ -22,33 +22,33 @@ public interface BoardService {
 
     public String NoticeWriteSave(HttpServletRequest request);
 
-    public String qnawriteSave(MultipartHttpServletRequest mul, HttpServletRequest request);
+    public String qnaWriteSave(MultipartHttpServletRequest mul, HttpServletRequest request);
 
     public void contentView(int product_no, Model model);
 
     public void NoticeView(int product_no, Model model);
 
-    public void qnacontentView(int product_no, Model model);
+    public void qnaContentView(int product_no, Model model);
 
     public String modify(MultipartHttpServletRequest mul, HttpServletRequest request);
 
     public String NoticeModify(HttpServletRequest request);
 
-    public String qnamodify(MultipartHttpServletRequest mul, HttpServletRequest request);
+    public String qnaModify(MultipartHttpServletRequest mul, HttpServletRequest request);
 
     public String boardDelete(int product_no, String product_img, HttpServletRequest request);
 
-    public String Noticedelete(int product_no, HttpServletRequest request);
+    public String NoticeDelete(int product_no, HttpServletRequest request);
 
-    public String qnaboardDelete(int product_no, String product_img, HttpServletRequest request);
+    public String qnaBoardDelete(int product_no, String product_img, HttpServletRequest request);
 
     public List<QnaReplyDTO> readReply(int bno);
 
     public String reply(HttpServletRequest request);
 
-    public void mypageList(Model model, int num, String id);
+    public void myPageList(Model model, int num, String id);
 
-    public void qnamypageList(Model model, int num, String id);
+    public void qnaMyPageList(Model model, int num, String id);
 
     /////////////////////////////////////////////////////////////////
 

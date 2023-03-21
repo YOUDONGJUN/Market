@@ -25,8 +25,8 @@
         <!-- section -->
         <section>
         	<h2>회원 관리</h2>
-            <div class="mypage">
-			<div class="mypage-con">
+            <div class="myPage">
+			<div class="myPage-con">
 				<table border="1">
 					<tr align = "center" bgcolor="#F2F2F2">
 						<td>아이디</td>
@@ -45,7 +45,7 @@
 						<td>${list.nickname }</td>
 						<td>
 							<input class="btn btn2" type="button" value="수정" onclick="location.href='info_a?id=${list.id }'">
-							<input class="btn btn2" type="button" value="삭제" onclick="location.href='memberDelete?id=${list.id }'">	
+							<input class="btn btn2" type="button" value="삭제" onclick="location.href='userDelete?id=${list.id }'">
 						</td>
 					</tr>
 					</c:forEach>

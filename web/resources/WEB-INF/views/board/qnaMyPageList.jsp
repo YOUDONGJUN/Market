@@ -25,14 +25,14 @@
     <!-- section -->
     <section>
         <h2>내가 쓴 글</h2>
-        <div class="mypage">
+        <div class="myPage">
             <div class="tab">
                 <ul>
                     <li><a href="myPageList.jsp?id=${loginUser }">판매 게시판</a></li>
-                    <li class="clicked"><a href="/root/board/qnaMyPageList.jsp?id=${loginUser }">문의 게시판</a></li>
+                    <li class="clicked"><a href="../board/qnaMyPageList.jsp?id=${loginUser }">문의 게시판</a></li>
                 </ul>
             </div>
-            <div class="mypage-con">
+            <div class="myPage-con">
                 <table class="table-style">
                     <tr align="center">
                         <td>No.</td>
@@ -40,7 +40,7 @@
                         <td>작성자</td>
                         <td>등록일</td>
                     </tr>
-                    <c:forEach var="dto" items="${qnamypageList }">
+                    <c:forEach var="dto" items="${qnaMyPageList }">
                         <tr>
                             <td>${dto.product_no }</td>
                             <td>
@@ -68,7 +68,7 @@
         </div>
         <div class="btn-wrapper">
             <input class="btn" type="button" value="돌아가기"
-                   onclick="location.href='../member/myPage.jsp';">
+                   onclick="location.href='../user/myPage.jsp';">
         </div>
     </section>
     <!--             <input type="button" value="돌아가기" onClick="history.go(-1)">  -->

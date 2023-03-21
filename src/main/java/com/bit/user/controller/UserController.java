@@ -1,9 +1,9 @@
-package com.bit.member.controller;
+package com.bit.user.controller;
 
 import com.bit.HomeController;
-import com.bit.member.dto.MemberDTO;
-import com.bit.member.service.MemberService;
-import com.bit.session.name.MemberSession;
+import com.bit.user.dto.UserDTO;
+import com.bit.user.service.UserService;
+import com.bit.session.name.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,24 +21,24 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-@RequestMapping("member")
-public class MemberController implements MemberSession {
+@RequestMapping("user")
+public class UserController implements UserSession {
 
     @Autowired
-    private MemberService memberService;
+    private UserService userService;
 
     @Autowired
     private HomeController homeController;
 
     @GetMapping("login")
     public String login() {
-        return "member/login";
+        return "user/login";
     }
 
     @RequestMapping("successLogin")
     public String successLogin(@RequestParam("id") String id, HttpSession session) {
         session.setAttribute(LOGIN, id);
-        return "member/successLogin";
+        return "user/successLogin";
     }
 
     @GetMapping("logout")
@@ -49,40 +49,40 @@ public class MemberController implements MemberSession {
         return "redirect:/index";
     }
 
-    @RequestMapping("/mypage")
-    public String mypage(Model model, @RequestParam("id") String userid) {
-        memberService.mypage(model, userid);
-        return "member/mypage";
+    @RequestMapping("/myPage")
+    public String myPage(Model model, @RequestParam("id") String userid) {
+        userService.myPage(model, userid);
+        return "user/myPage";
     }
 
     @RequestMapping("/info")
     public String info(Model model, @RequestParam("id") String userid) {
-        memberService.info(model, userid);
-        return "member/memberinfo";
+        userService.info(model, userid);
+        return "user/userInfo";
     }
 
     @RequestMapping("/info_a")
     public String info_a(Model model, @RequestParam("id") String userid) {
-        memberService.info(model, userid);
-        return "member/memberinfo_a";
+        userService.info(model, userid);
+        return "user/userInfo_a";
     }
 
 
     @RequestMapping("/infoUpdate")
-    public void infoUpdate(MemberDTO member,
+    public void infoUpdate(UserDTO user,
                            HttpServletRequest request,
                            HttpServletResponse response) throws Exception {
-        String message = memberService.infoUpdate(member, request);
+        String message = userService.infoUpdate(user, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
     }
 
     @RequestMapping("/infoUpdate_a")
-    public void infoUpdate_a(MemberDTO member,
+    public void infoUpdate_a(UserDTO user,
                              HttpServletRequest request,
                              HttpServletResponse response) throws Exception {
-        String message = memberService.infoUpdate_a(member, request);
+        String message = userService.infoUpdate_a(user, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -91,47 +91,47 @@ public class MemberController implements MemberSession {
     @RequestMapping("/register_form")
     public ModelAndView register_form() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/member/register");
+        mv.setViewName("/user/register");
         return mv;
     }
 
-    @RequestMapping("/idcheck")
+    @RequestMapping("/idCheck")
     @ResponseBody
     public String register(@RequestParam("id") String id) throws IOException {
-        String result = memberService.idcheck(id);
+        String result = userService.idCheck(id);
         return result;
     }
 
     @RequestMapping("/register")
-    public ModelAndView register(MemberDTO member) throws IOException {
+    public ModelAndView register(UserDTO user) throws IOException {
         ModelAndView mv = new ModelAndView();
-        int result = memberService.register(member);
-        mv.setViewName("/member/successRegister");
+        int result = userService.register(user);
+        mv.setViewName("/user/successRegister");
         return mv;
     }
 
 
-    @RequestMapping("/logintest")
-    public ModelAndView logintest(MemberDTO member, HttpServletResponse res, HttpServletRequest request, HttpSession session) throws IOException {
+    @RequestMapping("/loginTest")
+    public ModelAndView loginTest(UserDTO user, HttpServletResponse res, HttpServletRequest request, HttpSession session) throws IOException {
         ModelAndView mv = new ModelAndView();
         session = request.getSession();
-        int result = memberService.logintest(member);
+        int result = userService.loginTest(user);
         if (result != 1) {
             res.setContentType("text/html; charset=euc-kr");
             PrintWriter out = res.getWriter();
             out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); </script>");
             out.flush();
-            mv.setViewName("/member/login");
+            mv.setViewName("/user/login");
             return mv;
         } else {
             if (request.getParameter("id").equals("admin")) {
-                session.setAttribute(ADMIN_LOGIN, member.getId());
+                session.setAttribute(ADMIN_LOGIN, user.getId());
                 mv.addObject("session", session);
                 mv.addObject("result", result);
                 mv.setViewName("redirect:/index");
                 return mv;
             } else {
-                session.setAttribute(LOGIN, member.getId());
+                session.setAttribute(LOGIN, user.getId());
                 mv.addObject("session", session);
                 mv.addObject("result", result);
                 mv.setViewName("redirect:/index");
@@ -140,8 +140,8 @@ public class MemberController implements MemberSession {
         }
     }
 
-    @RequestMapping("/logouttest")
-    public ModelAndView logouttest(HttpServletRequest request, HttpSession session) {
+    @RequestMapping("/logoutTest")
+    public ModelAndView logoutTest(HttpServletRequest request, HttpSession session) {
         ModelAndView mv = new ModelAndView();
         session = request.getSession();
         session.invalidate();
@@ -149,24 +149,24 @@ public class MemberController implements MemberSession {
         return mv;
     }
 
-    @RequestMapping("/memberDelete")
-    public void memberDelete(@RequestParam("id") String id,
-                             MemberDTO member,
-                             HttpServletRequest request,
-                             HttpServletResponse response,
-                             HttpSession session) throws Exception {
-        String message = memberService.memberDelete(id, member, request, session);
+    @RequestMapping("/userDelete")
+    public void userDelete(@RequestParam("id") String id,
+                           UserDTO user,
+                           HttpServletRequest request,
+                           HttpServletResponse response,
+                           HttpSession session) throws Exception {
+        String message = userService.userDelete(id, user, request, session);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
     }
 
     // 01 회원 목록
-    @RequestMapping("/memberList")
-    public String memberList(Model model) {
-        List<MemberDTO> list = memberService.memberList();
+    @RequestMapping("/userList")
+    public String userList(Model model) {
+        List<UserDTO> list = userService.userList();
         model.addAttribute("list", list);
-        return "member/memberList";
+        return "user/userList";
     }
 
 }

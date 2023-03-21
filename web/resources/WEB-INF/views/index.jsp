@@ -62,7 +62,7 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${empty loginUser && empty loginAdmin}">
-                        <li class="right-nav"><a href="../member/register.jsp">회원가입</a></li>
+                        <li class="right-nav"><a href="../user/register.jsp">회원가입</a></li>
                     </c:when>
                 </c:choose>
                 <c:choose>
@@ -72,21 +72,21 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${empty loginUser && empty loginAdmin}">
-                        <li class="right-nav"><a href="../member/login.jsp">로그인</a></li>
+                        <li class="right-nav"><a href="../user/login.jsp">로그인</a></li>
                     </c:when>
                     <c:when test="${not empty loginUser || not empty loginAdmin}">
-                        <li class="right-nav"><a href="../member/logouttest">로그아웃</a></li>
+                        <li class="right-nav"><a href="../user/logoutTest">로그아웃</a></li>
                     </c:when>
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty loginAdmin}">
-                        <li class="right-nav clicked"><a href="../member/memberList.jsp">회원 관리</a></li>
-                        <li class="right-nav profile-ico"><a href="/member/memberList.jsp"><img
+                        <li class="right-nav clicked"><a href="../user/userList.jsp">회원 관리</a></li>
+                        <li class="right-nav profile-ico"><a href="/user/userList.jsp"><img
                                 src="../front/img/ico-profile.png" alt=""></a></li>
                     </c:when>
                     <c:when test="${not empty loginUser }">
-                        <li class="right-nav clicked"><a href="../member/myPage.jsp?id=${loginUser }">마이페이지</a></li>
-                        <li class="right-nav profile-ico"><a href="../member/myPage.jsp?id=${loginUser}"><img
+                        <li class="right-nav clicked"><a href="../user/myPage.jsp?id=${loginUser }">마이페이지</a></li>
+                        <li class="right-nav profile-ico"><a href="../user/myPage.jsp?id=${loginUser}"><img
                                 src="../front/img/ico-profile.png" alt=""></a></li>
                     </c:when>
                 </c:choose>
@@ -121,7 +121,7 @@
             <h2>지금 동준마켓과 함께 하세요!</h2>
             <c:if test="${empty loginUser && empty loginAdmin}">
                 <div class="btn-wrapper">
-                    <div class="btn"><a href="../member/register.jsp">가입하기</a></div>
+                    <div class="btn"><a href="../user/register.jsp">가입하기</a></div>
                 </div>
 
             </c:if>

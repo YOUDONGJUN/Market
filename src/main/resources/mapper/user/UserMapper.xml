@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- MemberMapper.xml -->
-<mapper namespace="com.web.root.mybatis.member.MemberMapper">
+<!-- UserMapper.xml -->
+<mapper namespace="com.bit.mybatis.user.UserMapper">
 
-    <resultMap type="com.web.root.member.dto.MemberDTO" id="member">
+    <resultMap type="com.bit.user.dto.userDTO" id="user">
         <id property="id" column="id"/>
         <result property="pw" column="pw"/>
         <result property="name" column="name"/>
@@ -15,26 +15,26 @@
         <result property="role" column="role"/>
     </resultMap>
 
-    <select id="idcheck" parameterType="String" resultType="String">
+    <select id="idCheck" parameterType="String" resultType="String">
         select count(*)
-        from membership
+        from user
         where id = #{id}
     </select>
 
-    <select id="mypage" resultMap="member">
+    <select id="myPage" resultMap="user">
         select *
-        from membership
+        from user
         where id = #{id}
     </select>
 
-    <select id="info" resultMap="member">
+    <select id="info" resultMap="user">
         select *
-        from membership
+        from user
         where id = #{id}
     </select>
 
     <update id="infoUpdate">
-        update membership
+        update user
         set name=#{name},
             id=#{id},
             pw=#{pw},
@@ -45,26 +45,26 @@
 
 
     <insert id="register">
-        insert into membership
+        insert into user
         values (#{id}, #{pw}, #{name}, #{email}, #{nickname}, #{type})
     </insert>
 
-    <select id="logintest" resultType="Integer">
+    <select id="loginTest" resultType="Integer">
         select count(*)
-        from membership
+        from user
         where id = #{id}
           and pw = #{pw}
     </select>
 
-    <delete id="memberDelete">
+    <delete id="userDelete">
         delete
-        from membership
+        from user
         where id = #{id}
     </delete>
 
-    <select id="memberList" resultType="com.web.root.member.dto.MemberDTO">
+    <select id="userList" resultType="com.bit.user.dto.userDTO">
         select *
-        from membership
+        from user
         where type = 'B'
     </select>
 

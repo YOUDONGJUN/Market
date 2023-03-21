@@ -95,9 +95,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void mypageList(Model model, int num, String id) {
+    public void myPageList(Model model, int num, String id) {
         int pageLetter = 8; // 한 페이지당 글목록 수
-        int allCount2 = boardMapper.myselectBoardCount(id); // 전체 글 수
+        int allCount2 = boardMapper.mySelectBoardCount(id); // 전체 글 수
 
         int repeat = allCount2 / pageLetter; // 마지막 페이지 번호
         if (allCount2 % pageLetter != 0) {
@@ -107,13 +107,13 @@ public class BoardServiceImpl implements BoardService {
         int start = end + 1 - pageLetter;
 
         model.addAttribute("repeat", repeat);
-        model.addAttribute("mypageList", boardMapper.mypageList(start, end, id));
+        model.addAttribute("myPageList", boardMapper.myPageList(start, end, id));
     }
 
     @Override
-    public void qnamypageList(Model model, int num, String id) {
+    public void qnaMyPageList(Model model, int num, String id) {
         int pageLetter = 8; // 한 페이지당 글목록 수
-        int allCount2 = boardMapper.qnamyselectBoardCount(id); // 전체 글 수
+        int allCount2 = boardMapper.qnaMySelectBoardCount(id); // 전체 글 수
 
         int repeat = allCount2 / pageLetter; // 마지막 페이지 번호
         if (allCount2 % pageLetter != 0) {
@@ -123,7 +123,7 @@ public class BoardServiceImpl implements BoardService {
         int start = end + 1 - pageLetter;
 
         model.addAttribute("repeat", repeat);
-        model.addAttribute("qnamypageList", boardMapper.qnamypageList(start, end, id));
+        model.addAttribute("qnaMyPageList", boardMapper.qnaMyPageList(start, end, id));
     }
 
     @Override
@@ -137,7 +137,6 @@ public class BoardServiceImpl implements BoardService {
         dto.setProduct_price((Integer.parseInt(mul.getParameter("product_price"))));
         dto.setProduct_trade(mul.getParameter("product_trade"));
         dto.setProduct_status(mul.getParameter("product_status"));
-        dto.setProduct_status1(mul.getParameter("product_status1"));
         MultipartFile file = mul.getFile("product_img");
 
 //      데이터 가져오는지 테스트
@@ -200,7 +199,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String qnawriteSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
+    public String qnaWriteSave(MultipartHttpServletRequest mul, HttpServletRequest request) {
         BoardDTO dto = new BoardDTO();
         dto.setProduct_writer(mul.getParameter("product_writer"));
         dto.setProduct_title(mul.getParameter("product_title"));
@@ -216,7 +215,7 @@ public class BoardServiceImpl implements BoardService {
         }
         int result = 0;
         try {
-            result = boardMapper.qnawriteSave(dto);
+            result = boardMapper.qnaWriteSave(dto);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -244,7 +243,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void qnacontentView(int product_no, Model model) {
+    public void qnaContentView(int product_no, Model model) {
         model.addAttribute("data", boardMapper.contentView(product_no));
 
     }
@@ -259,7 +258,6 @@ public class BoardServiceImpl implements BoardService {
         dto.setProduct_price(Integer.parseInt(mul.getParameter("product_price")));
         dto.setProduct_trade(mul.getParameter("product_trade"));
         dto.setProduct_status(mul.getParameter("product_status"));
-        dto.setProduct_status1(mul.getParameter("product_status1"));
 
         MultipartFile file = mul.getFile("product_img");
         if (file.getSize() != 0) {
@@ -315,7 +313,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String qnamodify(MultipartHttpServletRequest mul, HttpServletRequest request) {
+    public String qnaModify(MultipartHttpServletRequest mul, HttpServletRequest request) {
         BoardDTO dto = new BoardDTO();
         dto.setProduct_no(Integer.parseInt(mul.getParameter("product_no")));
         dto.setProduct_title(mul.getParameter("product_title"));
@@ -331,7 +329,7 @@ public class BoardServiceImpl implements BoardService {
 
         int result = 0;
         try {
-            result = boardMapper.qnamodify(dto);
+            result = boardMapper.qnaModify(dto);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -369,7 +367,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String Noticedelete(int product_no, HttpServletRequest request) {
+    public String NoticeDelete(int product_no, HttpServletRequest request) {
         int result = boardMapper.delete(product_no);
 
         String msg, url;
@@ -384,8 +382,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String qnaboardDelete(int product_no, String product_img, HttpServletRequest request) {
-        int result = boardMapper.qnadelete(product_no);
+    public String qnaBoardDelete(int product_no, String product_img, HttpServletRequest request) {
+        int result = boardMapper.qnaDelete(product_no);
 
         String msg, url;
         if (result == 1) {
@@ -404,7 +402,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void qna(Model model, int num) {
         int pageLetter = 8; // 한 페이지당 글목록 수
-        int allCount3 = boardMapper.qnaselectBoardCount(); // 전체 글 수
+        int allCount3 = boardMapper.qnaSelectBoardCount(); // 전체 글 수
 
         int repeat = allCount3 / pageLetter; // 마지막 페이지 번호
         if (allCount3 % pageLetter != 0) {

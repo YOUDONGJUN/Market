@@ -1,50 +1,50 @@
-package com.bit.member.service;
+package com.bit.user.service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.bit.member.dto.MemberDTO;
-import com.bit.mybatis.member.MemberMapper;
+import com.bit.user.dto.UserDTO;
+import com.bit.mybatis.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private MemberMapper memberMapper;
+	private UserMapper userMapper;
 
 	@Override
 	public int user_check(String id){
-		String usercheck = memberMapper.user_check(id);
-		//int usercheck =Integer.parseInt(mapper.user_check(id));
-		int result = Integer.parseInt(usercheck);
+		String userCheck = userMapper.userCheck(id);
+		//int userCheck =Integer.parseInt(mapper.user_check(id));
+		int result = Integer.parseInt(userCheck);
 		return result;
 	}
 
 	@Override
-	public void mypage(Model model, String userid) {
-		model.addAttribute("member", memberMapper.info(userid));
+	public void myPage(Model model, String userid) {
+		model.addAttribute("user", userMapper.info(userid));
 	}
 	
 	@Override
 	public void info(Model model, String userid) {
-		model.addAttribute("info", memberMapper.info(userid));
+		model.addAttribute("info", userMapper.info(userid));
 	}
 
 	@Override
-	public String infoUpdate(MemberDTO member, HttpServletRequest request) {
-		int result=memberMapper.infoUpdate(member);
+	public String infoUpdate(UserDTO user, HttpServletRequest request) {
+		int result=userMapper.infoUpdate(user);
 		String msg, url;
 		if(result==1) {
 			msg="내용이 변경되었습니다";
-			url="/member/mypage?id="+member.getId();
+			url="/user/myPage?id="+user.getId();
 		} else {
 			msg="수정 오류";
-			url="/member/memberinfo?id="+member.getId();
+			url="/user/userinfo?id="+user.getId();
 		}
 		String message=null;
 		String path=request.getContextPath();
@@ -54,15 +54,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public String infoUpdate_a(MemberDTO member, HttpServletRequest request) {
-		int result=memberMapper.infoUpdate(member);
+	public String infoUpdate_a(UserDTO user, HttpServletRequest request) {
+		int result=userMapper.infoUpdate(user);
 		String msg, url;
 		if(result==1) {
 			msg="내용이 변경되었습니다";
-			url="/member/memberList";
+			url="/user/userList";
 		} else {
 			msg="수정 오류";
-			url="/member/memberinfo_a?id="+member.getId();
+			url="/user/userinfo_a?id="+user.getId();
 		}
 		String message=null;
 		String path=request.getContextPath();
@@ -72,9 +72,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int register(MemberDTO member) {
+	public int register(UserDTO user) {
 		try {
-			return memberMapper.register(member);
+			return userMapper.register(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
@@ -82,14 +82,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int logintest(MemberDTO member) {
-		int result=memberMapper.logintest(member);
+	public int loginTest(UserDTO user) {
+		int result=userMapper.loginTest(user);
 		return result;
 	}
 
 
-	public String memberDelete(String id, MemberDTO member, HttpServletRequest request, HttpSession session) {
-		int result=memberMapper.memberDelete(id);
+	public String userDelete(String id, UserDTO user, HttpServletRequest request, HttpSession session) {
+		int result=userMapper.userDelete(id);
 		String msg, url;
 		if(result==1) {
 			msg="탈퇴를 진행하시겠습니까?";
@@ -98,7 +98,7 @@ public class MemberServiceImpl implements MemberService {
 			url="/index";
 		} else {
 			msg="탈퇴 오류";
-			url="/member/mypage?id="+member.getId();
+			url="/user/myPage?id="+user.getId();
 		}
 		String message=null;
 		String path=request.getContextPath();
@@ -108,14 +108,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String idcheck(String id) {
-		String result=memberMapper.idcheck(id);
+	public String idCheck(String id) {
+		String result=userMapper.idCheck(id);
 		return result;
 	}
 
 	@Override
-	public List<MemberDTO> memberList() {
-		return memberMapper.memberList();
+	public List<UserDTO> userList() {
+		return userMapper.userList();
 	}
 
 	

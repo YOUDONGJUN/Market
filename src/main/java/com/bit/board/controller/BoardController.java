@@ -30,13 +30,13 @@ import java.util.Map;
 @RequestMapping("board")
 public class BoardController {
 
-    @Qualifier("boardService")
+
     @Autowired
-    BoardService bs;
+    BoardService boardService;
 
     @GetMapping("boardAllList")
     public String boardAllList(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num) {
-        bs.boardAllList(model, num);
+        boardService.boardAllList(model, num);
         return "board/boardAllList";
     }
 
@@ -45,9 +45,9 @@ public class BoardController {
     // @RequestParam(defaultValue="") ==> 기본값 할당
     public ModelAndView boardList(@RequestParam(defaultValue = "product_title") String searchOption,
                                   @RequestParam(defaultValue = "") String keyword) throws Exception {
-        List<BoardDTO> list = bs.BlistAll(searchOption, keyword);
+        List<BoardDTO> list = boardService.BlistAll(searchOption, keyword);
         // 레코드의 갯수
-        int count = bs.BcountArticle(searchOption, keyword);
+        int count = boardService.BcountArticle(searchOption, keyword);
         // ModelAndView - 모델과 뷰
         ModelAndView mav = new ModelAndView();
         // 데이터를 맵에 저장
@@ -66,9 +66,9 @@ public class BoardController {
     // @RequestParam(defaultValue="") ==> 기본값 할당
     public ModelAndView qnaList(@RequestParam(defaultValue = "product_title") String searchOption,
                                 @RequestParam(defaultValue = "") String keyword) throws Exception {
-        List<BoardDTO> list = bs.QlistAll(searchOption, keyword);
+        List<BoardDTO> list = boardService.QlistAll(searchOption, keyword);
         // 레코드의 갯수
-        int count = bs.QcountArticle(searchOption, keyword);
+        int count = boardService.QcountArticle(searchOption, keyword);
         // ModelAndView - 모델과 뷰
         ModelAndView mav = new ModelAndView();
         // 데이터를 맵에 저장
@@ -85,25 +85,25 @@ public class BoardController {
 
     @GetMapping("qna")
     public String qna(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num) {
-        bs.qna(model, num);
+        boardService.qna(model, num);
         return "board/qna";
     }
 
-    @GetMapping("mypageList")
-    public String mypageList(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num, @RequestParam("id") String id) {
-        bs.mypageList(model, num, id);
-        return "board/mypageList";
+    @GetMapping("myPageList")
+    public String myPageList(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num, @RequestParam("id") String id) {
+        boardService.myPageList(model, num, id);
+        return "board/myPageList";
     }
 
-    @GetMapping("qnamypageList")
-    public String qnamypageList(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num, @RequestParam("id") String id) {
-        bs.qnamypageList(model, num, id);
-        return "board/qnamypageList";
+    @GetMapping("qnaMyPageList")
+    public String qnaMyPageList(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num, @RequestParam("id") String id) {
+        boardService.qnaMyPageList(model, num, id);
+        return "board/qnaMyPageList";
     }
 
     @GetMapping("Notice")
     public String Notice(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num) {
-        bs.Notice(model, num);
+        boardService.Notice(model, num);
         return "board/Notice";
     }
 
@@ -131,7 +131,7 @@ public class BoardController {
     public void writeSave(MultipartHttpServletRequest mul,
                           HttpServletResponse response,
                           HttpServletRequest request) throws IOException {
-        String message = bs.writeSave(mul, request);
+        String message = boardService.writeSave(mul, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -140,7 +140,7 @@ public class BoardController {
     @PostMapping("NoticeWriteSave")
     public void NoticeWriteSave(HttpServletResponse response,
                                 HttpServletRequest request) throws IOException {
-        String message = bs.NoticeWriteSave(request);
+        String message = boardService.NoticeWriteSave(request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -150,7 +150,7 @@ public class BoardController {
     public void qnawriteSave(MultipartHttpServletRequest mul,
                              HttpServletResponse response,
                              HttpServletRequest request) throws IOException {
-        String message = bs.qnawriteSave(mul, request);
+        String message = boardService.qnaWriteSave(mul, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -158,29 +158,29 @@ public class BoardController {
 
     @GetMapping("contentView")
     public String contentView(@RequestParam int product_no, Model model) {
-        bs.contentView(product_no, model);
+        boardService.contentView(product_no, model);
         return "board/contentView";
     }
 
     @GetMapping("NoticeView")
     public String NoticeView(@RequestParam int product_no, Model model) {
-        bs.NoticeView(product_no, model);
+        boardService.NoticeView(product_no, model);
         return "board/NoticeView";
     }
 
-    @GetMapping("qnacontentView")
-    public String qnacontentView(BoardDTO dto, @RequestParam int product_no, Model model) {
-        bs.qnacontentView(product_no, model);
+    @GetMapping("qnaContentView")
+    public String qnaContentView(BoardDTO dto, @RequestParam int product_no, Model model) {
+        boardService.qnaContentView(product_no, model);
 
-        List<QnaReplyDTO> replyList = bs.readReply(dto.getProduct_no());
+        List<QnaReplyDTO> replyList = boardService.readReply(dto.getProduct_no());
         model.addAttribute("replyList", replyList);
-        return "board/qnacontentView";
+        return "board/qnaContentView";
     }
 
     @PostMapping("reply")
     public void reply(HttpServletResponse response,
                       HttpServletRequest request) throws IOException {
-        String message = bs.reply(request);
+        String message = boardService.reply(request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -197,20 +197,20 @@ public class BoardController {
 
     @GetMapping("modifyForm")
     public String modifyForm(@RequestParam int product_no, Model model) {
-        bs.contentView(product_no, model);
+        boardService.contentView(product_no, model);
         return "board/modifyForm";
     }
 
     @GetMapping("NoticeModifyForm")
     public String NoticeModifyForm(@RequestParam int product_no, Model model) {
-        bs.NoticeView(product_no, model);
+        boardService.NoticeView(product_no, model);
         return "board/NoticeModifyForm";
     }
 
-    @GetMapping("qnamodifyform")
-    public String qnamodifyForm(@RequestParam int product_no, Model model) {
-        bs.qnacontentView(product_no, model);
-        return "board/qnamodifyform";
+    @GetMapping("qnaModifyForm")
+    public String qnaModifyForm(@RequestParam int product_no, Model model) {
+        boardService.qnaContentView(product_no, model);
+        return "board/qnaModifyForm";
     }
 
 
@@ -218,7 +218,7 @@ public class BoardController {
     public void modify(MultipartHttpServletRequest mul,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
-        String message = bs.modify(mul, request);
+        String message = boardService.modify(mul, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -227,17 +227,17 @@ public class BoardController {
     @PostMapping("NoticeModify")
     public void NoticeModify(HttpServletRequest request,
                              HttpServletResponse response) throws Exception {
-        String message = bs.NoticeModify(request);
+        String message = boardService.NoticeModify(request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
     }
 
-    @PostMapping("qnamodify")
+    @PostMapping("qnaModify")
     public void qnamodify(MultipartHttpServletRequest mul,
                           HttpServletRequest request,
                           HttpServletResponse response) throws Exception {
-        String message = bs.qnamodify(mul, request);
+        String message = boardService.qnaModify(mul, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -248,7 +248,7 @@ public class BoardController {
                        @RequestParam String product_img,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
-        String message = bs.boardDelete(product_no, product_img, request);
+        String message = boardService.boardDelete(product_no, product_img, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -259,7 +259,7 @@ public class BoardController {
     public void Noticedelete(@RequestParam int product_no,
                              HttpServletRequest request,
                              HttpServletResponse response) throws Exception {
-        String message = bs.Noticedelete(product_no, request);
+        String message = boardService.NoticeDelete(product_no, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);
@@ -271,7 +271,7 @@ public class BoardController {
                           @RequestParam String product_img,
                           HttpServletRequest request,
                           HttpServletResponse response) throws Exception {
-        String message = bs.qnaboardDelete(product_no, product_img, request);
+        String message = boardService.qnaBoardDelete(product_no, product_img, request);
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         out.print(message);

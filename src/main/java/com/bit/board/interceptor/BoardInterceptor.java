@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bit.session.name.MemberSession;
+import com.bit.session.name.UserSession;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import static com.bit.session.name.MemberSession.LOGIN;
-
-public class BoardInterceptor extends HandlerInterceptorAdapter implements MemberSession {
+public class BoardInterceptor extends HandlerInterceptorAdapter implements UserSession {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -21,7 +19,7 @@ public class BoardInterceptor extends HandlerInterceptorAdapter implements Membe
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out=response.getWriter();
 			out.println("<script>alert('로그인 후 작성이 가능합니다');"+
-			            "location.href='"+request.getContextPath()+"/member/login'</script>");
+			            "location.href='"+request.getContextPath()+"/user/login'</script>");
 			return false;
 		}
 		return true;

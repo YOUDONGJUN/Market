@@ -41,9 +41,9 @@
         <form id=register name="register" action="register.jsp" method="post">
             <fieldset>
                 <label for="name">이름</label><input type="text" name="name" id="name" placeholder="이름을 입력해주세요"
-                                                   value="${member.name }" required><br>
+                                                   value="${user.name }" required><br>
                 <label for="id">아이디</label><input type="text" name="id" id="id" placeholder="아이디를 입력해주세요"
-                                                  value="${member.id }" required>
+                                                  value="${user.id }" required>
                 <!--  회원가입 버튼에 아이디 중복체크기능있어서 제외 -->
                 <button style="margin-left: 20px; class=" btn
                 " type="button" id="idChk" value="N">중복확인</button>
@@ -57,22 +57,22 @@
                 <div class="alert alert-danger" id="alert-danger" style ="display:none">비밀번호가 일치하지 않습니다.</div> -->
 
                 <label for="nickname">닉네임</label><input type="text" name="nickname" id="nickname"
-                                                        placeholder="닉네임을 입력해주세요" value="${member.nickname }"
+                                                        placeholder="닉네임을 입력해주세요" value="${user.nickname }"
                                                         required><br>
                 <div id="nicknamecheck" style="display:none"></div>
                 <label for="email">이메일</label><input type="email" name="email" id="email" placeholder="이메일을 입력해주세요"
-                                                     value="${member.email }" required><br>
+                                                     value="${user.email }" required><br>
                 <input type="hidden" name="type" value="B">
                 <div style="text-align: center;" class="btn-wrapper">
                     <input class="btn btn-submit" type="button" value="가입하기" id="duplicatedId">
                 </div>
             </fieldset>
             <!-- <fieldset>
-                    <p>이름<input type="text" name="name" placeholder="이름을 입력해주세요" value="${member.name }" required></p>
-                    <p>아이디<input type="text" name="id" id="id" placeholder="아이디를 입력해주세요" value="${member.id }" required></p>
+                    <p>이름<input type="text" name="name" placeholder="이름을 입력해주세요" value="${user.name }" required></p>
+                    <p>아이디<input type="text" name="id" id="id" placeholder="아이디를 입력해주세요" value="${user.id }" required></p>
                     <p>비밀번호<input type="password" name="pw" placeholder="비밀번호를 입력해주세요" required></p>
-                    <p>닉네임<input type="text" name="nickname" placeholder="닉네임을 입력해주세요" value="${member.nickname }" required></p>
-                    <p>이메일<input type="email" name="email" placeholder="이메일을 입력해주세요" value="${member.email }" required></p>
+                    <p>닉네임<input type="text" name="nickname" placeholder="닉네임을 입력해주세요" value="${user.nickname }" required></p>
+                    <p>이메일<input type="email" name="email" placeholder="이메일을 입력해주세요" value="${user.email }" required></p>
                     <input class="btn btn-submit" type="submit" value="가입하기">
                 </fieldset> -->
         </form>
@@ -124,7 +124,7 @@
             var frm = $("#register")[0];
             var param = $(frm).serialize();
             $.ajax({
-                url: "/root/member/idcheck",
+                url: "user/idCheck",
                 type: "get",
                 data: param,
                 success: function (result) {

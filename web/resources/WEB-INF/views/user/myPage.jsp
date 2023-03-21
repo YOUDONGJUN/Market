@@ -22,22 +22,22 @@
     <!-- nav -->
     <c:import url="../default/nav.jsp"/>
     <!-- section -->
-    <section class="mypage-home">
+    <section class="myPage-home">
         <h2>마이페이지</h2>
         <div>
-            <a href="info?id=${member.id }" id="">
+            <a href="info?id=${user.id }" id="">
                 <img src="../front/img/ico-profile.png" alt="">
                 <h3>내 정보 수정</h3>
             </a>
         </div>
         <div>
-            <a href="../board/myPageList.jsp?id=${member.id }">
+            <a href="../board/myPageList.jsp?id=${user.id }">
                 <img src="../front/img/ico-board.png" alt="">
                 <h3>내가 쓴 글</h3>
             </a>
         </div>
         <div>
-            <a href="memberDelete?id=${member.id }">
+            <a href="userDelete?id=${user.id }">
                 <img src="../front/img/ico-exit.png" alt="">
                 <h3>회원탈퇴</h3>
             </a>

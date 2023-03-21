@@ -34,9 +34,11 @@
     <section>
         <h2>로그인</h2>
         <p>동준마켓을 이용하시려면 로그인해야함</p>
-        <form action="${contextPath }/member/logintest" method="post">
+        <form action="${contextPath }/user/loginTest" method="post">
             <fieldset>
-                <label for="id">아이디</label><input type="text" name="id" placeholder="아이디를 입력해주세요" required><br>
+                <%--@declare id="id"--%><%--@declare id="pw"--%><label for="id">아이디</label><input type="text" name="id"
+                                                                                                  placeholder="아이디를 입력해주세요"
+                                                                                                  required><br>
 
                 <label for="pw">비밀번호</label><input type="password" name="pw" placeholder="비밀번호를 입력해주세요" required><br>
 
